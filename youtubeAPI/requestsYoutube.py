@@ -47,7 +47,7 @@ class YTstats:
         #parts = ["snippet", "statistics", "contentDetails", "topicDetails", etc etc]
         parts = ["snippet", "statistics", "contentDetails"] #Aqui defino que informacion quiero obtener del canal
         for video_id in tqdm(channel_videos): #esta linea no la entiendo
-            for part in parts:
+            for part in parts: # Ojo aqqui, cambien la funcion 4
                 data = self._get_single_video_data(video_id, part) # Aqui se llama al a funcion (4)
                 channel_videos[video_id].update(data)
 
@@ -65,7 +65,11 @@ class YTstats:
         json_url = requests.get(url)
         data = json.loads(json_url.text)
         print(data)
-        # g
+        # try:
+        #     data = data['items'][0][part] #Para que es esto?
+        # except KeyError as e:
+        #     print(f'Error! Could not get {part} part of data: \n{data}')
+        #     data = dict() # hace un diccionario vacio si hay error en la peticion de datos
         return data
 
 #FUNCION 5 de 7 _get_channel_content -----------------------------------------------------
