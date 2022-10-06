@@ -1,7 +1,6 @@
 import json
 import requests
 
-# Variable que guarda en {string}, la api key, de la cuenta google developer
 
 # hiCE ESTE script porque queria averiguar especificamente en donde se guardan los datos de un video en particular, con el titulo y su duracion.
 # yO QU E ESTABA BORRACHO CUANDO ESCRIBI ESTO?
@@ -30,6 +29,7 @@ def get_data_spcific_video(id_video, api_key, part):
 # db, SAVE DATA IN ROM, in format json
 def storage_to_json_file(data):
     fused_data = data
+
     filename = "output\probando" + ".json" #Quiero hacer que el nombrado del archivo JSON sea dinamico, es decir que se obyenga o se ponga el nombre segun el titulo del video y del canala por el cual estoy extrayendo los datos
     with open(filename, 'w') as f:
         json.dump(fused_data, f, indent=4)
