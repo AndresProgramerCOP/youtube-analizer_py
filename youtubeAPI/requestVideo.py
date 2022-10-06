@@ -1,12 +1,10 @@
 import json
 import requests
 
-
 # hiCE ESTE script porque queria averiguar especificamente en donde se guardan los datos de un video en particular, con el titulo y su duracion.
 # yO QU E ESTABA BORRACHO CUANDO ESCRIBI ESTO?
 
 # Este script solo sirve para guardar un video y su informacion a la vez, no aplica para una lista fde video o id
-
 
 # FUNCION 1
 
@@ -36,4 +34,3 @@ def storage_to_json_file(data):
 
     print('file dumped to', filename)
     pass
-
