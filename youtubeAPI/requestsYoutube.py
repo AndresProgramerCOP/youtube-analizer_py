@@ -2,9 +2,10 @@ import json
 import requests
 from tqdm import tqdm
 
-# Este script trae toda la informacion de un canal de yotube
-#Una sola clase que contiene todas las funciones, para este caso solo son 7 funciones
 class YTstats:
+    """ Este script trae toda la informacion de un canal de yotube
+    Una sola clase que contiene todas las funciones, para este caso solo son 7 funciones
+    """
     def __init__(self, api_key, channel_id): #Constructor
         self.api_key = api_key
         self.channel_id = channel_id
