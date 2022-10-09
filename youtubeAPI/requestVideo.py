@@ -14,8 +14,8 @@ def get_data_spcific_video(id_video, api_key, part):
 
 
 def format_data(data1):
-    """ Format and select data, with custom json"""
-    try:  
+    """ Format/transform and select data, with custom json"""
+    try:
         data1 = {"title": data1['items'][0]['snippet']['localized']['title'],
                     "duration": data1['items'][0]['contentDetails']['duration']}
         #Un error aqui todo raro que no se como hacer, van 6 errores, el error era como ya esta sobreescribiendo data,
