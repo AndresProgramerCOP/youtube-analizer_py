@@ -66,19 +66,6 @@ class YTstats:
         json_url = requests.get(url)
         data = json.loads(json_url.text)
         print(data)
-<<<<<<< HEAD:youtubeAPI/requestsYoutube.py
-        # try:
-        #     data = data['items'][0][part] #Para que es esto?
-        # except KeyError as e:
-        #     print(f'Error! Could not get {part} part of data: \n{data}')
-        #     data = dict() # hace un diccionario vacio si hay error en la peticion de datos
-=======
-        try:
-            data = data['items'][0][part] #Para que es esto?
-        except KeyError as e:
-            print(f'Error! Could not get {part} part of data: \n{data}')
-            data = dict() #Esta linea no la entiendo, hace un diccionario vacio si hay error en la peticion de datos
->>>>>>> parent of caeb218 (changue 2do funticion delete a try, except, i dont know how to work this):youtubeAPI/youtube_statistics.py
         return data
 
 #FUNCION 5 de 7 _get_channel_content -----------------------------------------------------
