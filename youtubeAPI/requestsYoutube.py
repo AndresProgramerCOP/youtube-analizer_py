@@ -28,6 +28,7 @@ class YTstats:
 
         json_url = requests.get(url) #Json obtenido de la url,
         data = json.loads(json_url.text)
+        # FORMATING THE DATA
         try:
             data = {"channel_statistic": data['items'][0]['statistics'], "data_information": data['items'][0]['snippet']}  #Creo un diccionario personalizado, que tiene 2 claves.
         except KeyError:

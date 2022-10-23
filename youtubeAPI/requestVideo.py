@@ -4,8 +4,7 @@ import requests
 # Este script solo sirve para guardar un video y su informacion a la vez, no aplica para una lista fde video o id
 
 # FUNCION 1
-
-def get_data_spcific_video(id_video, api_key, part):
+def get_data_video(id_video, api_key, part):
     # Url de la API, o endpoint
     url = f'https://www.googleapis.com/youtube/v3/videos?key={api_key}&id={id_video}&part={part}'
     json_url = requests.get(url)
@@ -15,13 +14,11 @@ def get_data_spcific_video(id_video, api_key, part):
 
 def format_data(data1):
     """ Format/transform and select data, with custom json"""
-    try:
-        data1 = {"title": data1['items'][0]['snippet']['localized']['title'],
-                    "duration": data1['items'][0]['contentDetails']['duration']}
-        #Un error aqui todo raro que no se como hacer, van 6 errores, el error era como ya esta sobreescribiendo data,
-    except KeyError:
-        print('Could not get channel snippet')
-        data1 = {}
+    data1 = {"title": data1['items'][0]['snippet']['title'],
+            "duration": data1['items'][0]['contentDetails']['duration']
+            }
+    #Un error aqui todo raro que no se como hacer, van 6 errores, el error era como ya esta sobreescribiendo data,
+    return data1
 
 
 # FUNCION 2
