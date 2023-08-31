@@ -1,8 +1,8 @@
 # KNOW THE DATA YOUTUBE
 
-This program let you bulk teh "main" data about a chanell youtube or single video, and more.
+This program let you bulk the "main" data about a chanell youtube or single video, and more.
 
-Data like duration of video, title, channel, data at publish
+Get Data like duration of video, title, channel, data at publish
 
 ## install
 

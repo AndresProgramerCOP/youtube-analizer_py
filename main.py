@@ -10,4 +10,8 @@ load_dotenv()
 
 API_KEY = os.getenv('API_KEY')
 
-import youtubeAPI 
+from youtubeAPI.requestsYoutube import YTstats
+
+yt = YTstats(API_KEY, "@ladomicilio")
+yt.extract_all()
+yt.dump_to_json()  # dumps to .json
