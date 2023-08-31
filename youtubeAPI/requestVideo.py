@@ -1,7 +1,7 @@
 import json
 import requests
 
-# Este script solo sirve para guardar un video y su informacion a la vez, no aplica para una lista fde video o id
+# Este script solo sirve para guardar un video y su informacion a la vez, no aplica para una lista de video o id
 
 # FUNCION 1
 def get_data_video(id_video, api_key, part):

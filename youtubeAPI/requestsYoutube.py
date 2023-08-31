@@ -6,16 +6,23 @@ class YTstats:
     """ Este script trae toda la informacion de un canal de yotube
     Una sola clase que contiene todas las funciones, para este caso solo son 7 funciones
     """
-    def __init__(self, api_key, channel_id): #Constructor
+    def __init__(self, api_key, link_youtube): #Constructor
         self.api_key = api_key
-        self.channel_id = channel_id
+        self.channel_id = good_len(link_youtube)
         self.channel_statistics = None
         self.video_data = None
 
-#FUNCION 1 de 7 que ejecuta todo.
+
+#FUNCION 1 de 7 que ejecuta todo,funcion que llama funciones
     def extract_all(self):
         self.get_channel_statistics() #Aqui se llama a la funcion 2.
         self.get_channel_video_data() #Aqui se llama a la funcion 3.
+        
+    def good_len(link_youtube):
+        if len(link_youtube[32:]) < 11:
+            return False
+        else:
+            return link_youtube[32:]
 
 #FUNCION 2 de 7, funcion sencillas  15 lienas de codigo,
 # ESTA FUNCION EN LO personal no me gusta hace riudo en los datos, se puede guardar en otro json aparte y listo  O como otro objeto json dentro de los mismo objeto json

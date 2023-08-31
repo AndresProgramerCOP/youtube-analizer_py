@@ -1,13 +1,13 @@
-from config import API_KEY
-from youtubeAPI.requestVideo import get_data_video, format_data, storage_to_json_file
-from files.readfile import readContent
+"""_Config_
+    Import your API KEY, this is the basic config
+    
+    fOR THIS momente, we don't use a difereten file for a config
+"""
 
-id_video = "M90aTPMZdJI"
-part = "snippet,contentDetails,statistics"
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
-a = readContent("output/","probando.json")
+API_KEY = os.getenv('API_KEY')
 
-# b = format_data(a)
-# print(a['items'][0]['kind'], type(a))
-
-print(a)
+import youtubeAPI 
