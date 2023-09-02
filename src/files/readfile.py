@@ -1,5 +1,3 @@
-import json
-
 
 def readContent(dirpath, file):
     """"""
@@ -9,6 +7,8 @@ def readContent(dirpath, file):
     arg: dirpath, the obsolutely dir path of the file
     arg: file, de name of the file and their extension.
     """
+    import json
     with open(f'{dirpath}{file}', 'r', encoding="utf-8") as file:
         dict = json.load(file)
     return dict
+

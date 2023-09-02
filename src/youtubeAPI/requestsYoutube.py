@@ -13,12 +13,12 @@ class YTstats:
         self.video_data = None
 
 
-#FUNCION 1 de 7 que ejecuta todo,funcion que llama funciones
+#FUNCION 1 de 7, entiendo, que ejecuta todo,funcion que llama funciones, no me gusta asi, me gusta escripting
     def extract_all(self):
         self.get_channel_statistics() #Aqui se llama a la funcion 2.
         self.get_channel_video_data() #Aqui se llama a la funcion 3.
 
-#FUNCION 2 de 7, funcion sencillas  15 lienas de codigo,
+#FUNCION 2 de 7, entiendo, funcion sencillas  15 lienas de codigo,
 # ESTA FUNCION EN LO personal no me gusta hace riudo en los datos, se puede guardar en otro json aparte y listo  O como otro objeto json dentro de los mismo objeto json
 #Devuelve 2 datos
     def get_channel_statistics(self):
@@ -29,7 +29,7 @@ class YTstats:
 
         json_url = requests.get(url) #Json obtenido de la url,
         data = json.loads(json_url.text)
-        # FORMATING THE DATA
+        # FORMATING THE DATA, para que lo quiero formatear es la pregunta? o trocear? o porque el lo hizo asi?
         try:
             data = {"channel_statistic": data['items'][0]['statistics'], "data_information": data['items'][0]['snippet']}  #Creo un diccionario personalizado, que tiene 2 claves.
         except KeyError:
@@ -49,14 +49,14 @@ class YTstats:
 
         parts = ["snippet", "statistics", "contentDetails"] #Aqui defino que informacion quiero obtener del canal
         for video_id in tqdm(channel_videos): #esta linea no la entiendo
-            for part in parts: # Ojo aqqui, cambien la funcion 4
-                data = self._get_single_video_data(video_id, part) # Aqui se llama al a funcion (4)
-                channel_videos[video_id].update(data)
+            #for part in parts: # Ojo aqqui, cambien la funcion 4
+            data = self._get_single_video_data(video_id, parts) # Aqui se llama al a funcion (4)
+            channel_videos[video_id].update(data)
 
         self.video_data = channel_videos
         return channel_videos
 
-#FUNCION 4 de 7
+#FUNCION 4 de 7, entiendo
     def _get_single_video_data(self, video_id, part):
         """
         Extract further information for a single video
@@ -66,7 +66,6 @@ class YTstats:
         url = f"https://www.googleapis.com/youtube/v3/videos?part={part}&id={video_id}&key={self.api_key}"
         json_url = requests.get(url)
         data = json.loads(json_url.text)
-        print(data)
         return data
 
 #FUNCION 5 de 7 _get_channel_content -----------------------------------------------------
@@ -94,7 +93,7 @@ class YTstats:
 
         return vid, pl
 
-#FUNCION 6 de 7, esta funcion devuelve 3 datos
+#FUNCION 6 de 7, no entiendo, esta funcion devuelve 3 datos
     def _get_channel_content_per_page(self, url):
         """
         Extract all videos and playlists per page
@@ -106,7 +105,7 @@ class YTstats:
         channel_playlists = dict()
         if 'items' not in data:
             print('Error! Could not get correct channel data!\n', data)
-            return channel_videos, channel_playlists, None # channel_videos -> channel_plalists
+            return channel_videos, channel_playlists, None
 
         nextPageToken = data.get("nextPageToken", None)
 
@@ -127,11 +126,12 @@ class YTstats:
 
         return channel_videos, channel_playlists, nextPageToken
 
-#FUNCION 7 de 7,
+#FUNCION 7 de 7, entiendo,
 # En esta funcion no se hace llamado a ninguna otra funcion o metodos de teceros. o importados, se usan 3 variablesm 1 if,  1 sentencia
 # with [...] as [...]:
     def dump_to_json(self):
         """Dumps channel statistics and video data in a single json file"""
+
         if self.channel_statistics is None or self.video_data is None:
             print(
                 ' Data is missing!\nCall get_channel_statistics() and get_channel_video_data() first!')
@@ -140,7 +140,8 @@ class YTstats:
         fused_data = {"id_channel":self.channel_id,  "statistics":self.channel_statistics, "video_data": self.video_data}
         channel_title = self.video_data.popitem()[1].get('channelTitle', self.channel_id)
         channel_title = channel_title.replace(" ", "_")
-        filename = f'output/{channel_title}.json' # Variable que crea el nombre para el archivo json que s eva a crear
+        filename = f'output/channel_youtube_id_{channel_title}.json' # Variable que crea el nombre para el archivo json que s eva a crear
+
         with open(filename, 'w') as f:
             json.dump(fused_data, f, indent=4)
 

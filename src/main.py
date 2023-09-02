@@ -1,14 +1,13 @@
-"""_Config_
-    Import your API KEY, this is the basic config
-    
-    fOR THIS moment, we don't use a difereten file for a config
-"""
-
 from time import time
 import os
+from youtubeAPI.requestsYoutube import YTstats
+
+"""_Config.py_
+    Import your API KEY, this is the basic config
+    fOR THIS moment, we don't use a difereten file for a config
+"""
 from dotenv import load_dotenv
 load_dotenv()
-
 API_KEY = os.getenv('API_KEY')
 
 
@@ -33,14 +32,10 @@ def count_elapsed_time(f):
 
 @count_elapsed_time
 def main():
-    from youtubeAPI.requestsYoutube import YTstats
-
-    ch_id = 'UCbXgNpp0jedKWcQiULLbDTA'
-    yt = YTstats(api_key=API_KEY, channel_id=ch_id)
+    chan_id="UCWNdNma5sbMELOhpu6qD8Sg"
+    yt = YTstats(api_key=API_KEY, channel_id=chan_id)
     yt.extract_all()
-    yt.dump_to_json()  # dumps to .json
-    
-    return print("Se ejecuto el programa, todo salio bien?")
+    yt.dump_to_json()
 
 
 main()
